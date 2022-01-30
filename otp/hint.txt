@@ -1,0 +1,1 @@
+Hint: The most common 8 characters passwords are "password","12345678", and "iloveyou"
