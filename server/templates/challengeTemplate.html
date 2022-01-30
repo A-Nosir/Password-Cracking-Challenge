@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Challenge {{challenge.challenge_index}}</title>
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- External Stylesheets -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&amp;display=swap" media="all">
+    </head>
+
+    <style>
+        body {
+            background-color: rgb(70, 23, 143);
+            font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+         span {
+            color: white;
+        }
+
+        input {
+            border-radius: 5px;
+            border: 2px solid rgb(204, 204, 204) !important;
+            color: rgb(204, 204, 204) !important;
+            font-weight: 700;
+        }
+
+        button {
+            position: relative;
+            top: 0px;
+            font-size: 25px;
+            background: rgb(58, 58, 58);
+            padding: 15px 50px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 5px 0px rgb(38, 38, 38);
+        }
+
+        h1 {
+            font-weight: 800;
+            color: white;
+        }
+
+        h2:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        
+        h5 {
+            color:rgb(70, 23, 143);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:hover {
+            position: relative;
+            top: 5px;
+            box-shadow: none !important;
+        }
+
+    </style>
+
+    <body onload="init()">
+
+    <!-- Navigation -->
+    <div class="w3-bar w3-padding">
+        <h2 class="w3-bar-item w3-text-white" onclick="location.href='/'">Home</h2>
+    </div>
+
+    <div class="w3-container w3-third w3-display-middle">
+        <h1 class="w3-padding w3-center">{{challenge.challenge_title}}</h1>
+        <div class="w3-card w3-round w3-white w3-padding">
+            <div class="w3-section w3-padding">
+                <p>{{challenge.challenge_description}}</p>
+                <ol>
+                    {% for n in challenge.challenge_instructions %}
+                    <li>{{n}}</li>
+                    {% endfor %}
+                </ol>
+                <div style="position:sticky;">
+                    <h5 id="hintLabel" onclick="toggleShowHint()">Show Hint</h5>
+                    <div id="hintBox" style="display: none;">
+                        <ul>
+                            {% for n in challenge.challenge_hints %}
+                            <li>{{n}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <form action="/challenge/{{challenge.challenge_index}}/download" method="get">
+                <div class="w3-section w3-padding">
+                    <input id="cnum" class="w3-input w3-padding" type="text" placeholder="Challenge Number" name="cnum" required>
+                    <br>
+                    <div class="w3-center w3-padding">
+                        <button class="w3-center w3-padding" type="submit">
+                            <span>Download Challenge</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <form id="loginForm" action="#" onsubmit="return false">
+                <div class="w3-section w3-padding">
+                    <input 
+                        id="username"
+                        class="w3-input w3-padding" 
+                        type="text" 
+                        placeholder="Username" 
+                        name="username" 
+                        required
+                    >
+                    <br>
+                    <input
+                        id="password"
+                        class="w3-input w3-padding" 
+                        type="text" 
+                        placeholder="Password" 
+                        name="password" 
+                        required
+                    >
+                    <br>
+                    <div class="w3-center w3-padding">
+                        <button class="w3-padding" type="submit" onclick="login()">
+                            <span>Login</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </body>
+</html>
+
+<script>
+    function toggleShowHint() {
+        let hintLabel = document.getElementById("hintLabel");
+        let hintBox = document.getElementById("hintBox");
+        if (hintBox.style.display === "none") {
+            hintLabel.innerHTML = "Hide Hint";
+            hintBox.style.display = "block";
+        } else {
+            hintLabel.innerHTML = "Show Hint";
+            hintBox.style.display = "none";
+        }
+    }
+</script>
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="/static/challenge.js"></script>

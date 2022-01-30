@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../static/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/owlcarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Home</title>
+</head>
+<body>
+
+    <div style="margin-top: 20vh;" class="w3-display-container">
+        <div class="w3-display-center">
+            <div class="owl-carousel owl-theme">
+                {% for id in challenges %}
+                <div class="w3-container" style="width: 50%; margin: auto;">
+                    <h1 class="w3-padding w3-center">
+                        {{challenges[id].challenge_title}}
+                    </h1>
+                    <div class="w3-card w3-white w3-round w3-padding">
+                        <div class="w3-section w3-padding">
+                            <p>{{challenges[id].challenge_description}}</p>
+                            <ol>
+                                {% for n in challenges[id].challenge_instructions %}
+                                <li>{{n}}</li>
+                                {% endfor %}
+                            </ol>
+                            <br>
+                            <div class="w3-center w3-padding">
+                                <button class="button w3-center w3-padding" type="button" onclick="location.href='/challenge/{{challenges[id].challenge_index}}'">
+                                    <span>Start</span>
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>      
+</body>
+
+<script src="../static/owlcarousel/owl.carousel.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            center: true,
+            items: 2,
+            loop:true,
+            margin: 70,
+            navigation: false,
+            responsive:{
+                800:{
+                    items:2
+                },
+                1000:{
+                    items:2
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+
+    body {
+            background-color: rgb(70, 23, 143);
+            font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+         span {
+
+            opacity: 1 !important; 
+            color: white;
+        }
+
+        input {
+            border-radius: 5px;
+            border: 2px solid rgb(204, 204, 204) !important;
+            color: rgb(204, 204, 204) !important;
+            font-weight: 700;
+        }
+
+        .button {
+            position: relative;
+            top: 0px;
+            font-size: 25px;
+            background: rgb(58, 58, 58);
+            padding: 15px 50px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 5px 0px rgb(38, 38, 38);
+        }
+
+        h1 {
+            font-weight: 800;
+            color: white;
+        }
+
+        h2:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        
+        h5 {
+            color:rgb(70, 23, 143);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            position: relative;
+            top: 5px;
+            box-shadow: none !important;
+        }
+
+
+    .owl-item, .owl-item > div {
+        height: 75vh;
+        opacity: 0.5;
+        transition: all 0.3s ease-in-out 0.05s;
+    }
+
+    .owl-item.active.center, .owl-item.active.center > div {
+        opacity: 1;
+        transition: all 0.3s ease-in-out 0.05s;
+    }
+
+    .owl-carousel span {
+        opacity: 0.7;
+    }
+
+    .owl-dot.active span {
+        opacity: 1;
+    }
+
+
+</style>
+
+</html>

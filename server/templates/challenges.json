@@ -1,0 +1,67 @@
+{ 
+    "1":{
+        "challenge_index" : 1,
+        "challenge_title" : "One-Time Pad",
+        "challenge_description" : "Exploit a one-time pad repeated across multiple passwords",
+        "challenge_instructions" : [
+            "Download the file to find a list of encrypted passwords. In this scenario the site had encrypted all of their passwords using one-time pad, however they have all been encrypted with the same pad.",
+            "Using what you know about one-time pads, login into the the account with the username 'user0'.",
+            "Note: All passwords are 8 characters long."
+        ],
+        "challenge_hints" : [
+            "The most common 8 character passwords are 'password','12345678', and 'iloveyou'"
+        ]
+    } ,
+    "2":{
+        "challenge_index" : 2,
+        "challenge_title" : "Shift Cipher",
+        "challenge_description" : "Decode passwords hidden using a shift cipher",
+        "challenge_instructions" : [
+            "Download the file to find a list of encoded passwords. In this scenario the site has run all their passwords have been run through a shift cipher, but all have been shifted by the same key.",
+            "Your goal is to login to any account listed in the file.",
+            "Note: All passwords are 8 characters long."
+        ],
+        "challenge_hints" : [
+            "Look into frequency analysis for common 8 character passwords."
+        ]
+    },
+    "3":{
+        "challenge_index" : 3,
+        "challenge_title" : "Double DES",
+        "challenge_description" : "Decrypt a password using a list of known plaintext ciphertext password pairs.",
+        "challenge_instructions" : [
+            "Download the file to find a list of passwords. In this scenario the site encrypts their passwords via double DES, but stores them in plaintext prior to encryption. You have been given a number of plaintext ciphertext pairs, along with a single unknown password for 'user0'. All the passwords were encrypted with the same key.",
+            "Using what you know about double DES, login into the the account with the username 'user0'.",
+            "Note: All passwords are 8 characters long."
+        ],
+        "challenge_hints" : [
+            "Meet in the middle."
+        ]
+    },
+    "4":{
+        "challenge_index" : 4,
+        "challenge_title" : "RSA",
+        "challenge_description" : "Decrypt a password with a weak RSA encryption.",
+        "challenge_instructions" : [
+            "Download the file to find a list of passwords. In this scenario the site encrypts their passwords via RSA, but is known to use paticularly small prime numbers. In additon, all the passwords have been encrypted using the same prime numbers.",
+            "Your goal is to login to any user account in the list.",
+            "Note: All passwords are 8 characters long."
+        ],
+        "challenge_hints" : [
+            "A weak RSA can easily be brute forced with a modern computer."
+        ]
+    },
+    "5":{
+        "challenge_index" : 5,
+        "challenge_title" : "SHA-256",
+        "challenge_description" : "Login into a user account given only SHA-256 hashed passwords.",
+        "challenge_instructions" : [
+            "Download the file to find a list of passwords. In this scenario the site has followed proper standards and hashed their passwords, in this case using SHA-256. So the passwords cannot be decrypted back to plaintext.",
+            "our goal is to login to any user account in the list.",
+            "Note: All passwords are 8 characters long."
+        ],
+        "challenge_hints" : [
+            "The hashes are unsalted."
+        ]
+    }
+}
